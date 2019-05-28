@@ -1,0 +1,464 @@
+<html>
+
+<head>
+    <style>
+        html {
+            background-color: #b6b6b6;
+        }
+
+        body {
+            background-color: aqua;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .seq-step-selector {
+            padding: 10px;
+        }
+
+        #seq-output {
+            padding: 20px;
+            border: solid black;
+            max-width: 80%;
+            /* min-height: 50px; */
+            margin: auto;
+            text-align: center;
+        }
+
+        .seq-note {
+            padding-top: 10px;
+            padding-bottom: 10px;
+            margin: 10px;
+            background-color: crimson;
+        }
+
+        .horizontal-divider {
+            background-color: black;
+            height: 2px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="note-selectors">
+        <div id="step1-downdown" class="seq-step-selector">
+            <label for="step1">Step 1:</label>
+            <select id="step1" class="seq-step">
+                <option value=-1>XXX</option>
+                <option value=0>G2</option>
+                <option value=1>G#2</option>
+                <option value=2>A3</option>
+                <option value=3>A#3</option>
+                <option value=4>B3</option>
+                <option value=5>C3</option>
+                <option value=6>C#3</option>
+                <option value=7>D3</option>
+                <option value=8>D#3</option>
+                <option value=9>E3</option>
+                <option value=10>F3</option>
+                <option value=11>F#3</option>
+
+                <option value=12>G3</option>
+                <option value=13>G#3</option>
+                <option value=14>A4</option>
+                <option value=15>A#4</option>
+                <option value=16>B4</option>
+                <option value=17>C4</option>
+                <option value=18>C#4</option>
+                <option value=19>D4</option>
+                <option value=20>D#4</option>
+                <option value=21>E4</option>
+                <option value=22>F4</option>
+                <option value=23>F#4</option>
+
+                <option value=24>G4</option>
+                <option value=25>G#4</option>
+                <option value=26>A5</option>
+                <option value=27>A#5</option>
+                <option value=28>B5</option>
+                <option value=29>C5</option>
+                <option value=30>C#5</option>
+                <option value=31>D5</option>
+                <option value=32>D#5</option>
+                <option value=33>E5</option>
+                <option value=34>F5</option>
+                <option value=35>F#5</option>
+            </select>
+            <input type="checkbox" name="gate1" class="gate-checkbox" value=1>Gate
+        </div>
+        <div id="step2-downdown" class="seq-step-selector">
+            <label for="step2">Step 2:</label>
+            <select id="step2" class="seq-step">
+                <option value=-1>XXX</option>
+                <option value=0>G2</option>
+                <option value=1>G#2</option>
+                <option value=2>A3</option>
+                <option value=3>A#3</option>
+                <option value=4>B3</option>
+                <option value=5>C3</option>
+                <option value=6>C#3</option>
+                <option value=7>D3</option>
+                <option value=8>D#3</option>
+                <option value=9>E3</option>
+                <option value=10>F3</option>
+                <option value=11>F#3</option>
+
+                <option value=12>G3</option>
+                <option value=13>G#3</option>
+                <option value=14>A4</option>
+                <option value=15>A#4</option>
+                <option value=16>B4</option>
+                <option value=17>C4</option>
+                <option value=18>C#4</option>
+                <option value=19>D4</option>
+                <option value=20>D#4</option>
+                <option value=21>E4</option>
+                <option value=22>F4</option>
+                <option value=23>F#4</option>
+
+                <option value=24>G4</option>
+                <option value=25>G#4</option>
+                <option value=26>A5</option>
+                <option value=27>A#5</option>
+                <option value=28>B5</option>
+                <option value=29>C5</option>
+                <option value=30>C#5</option>
+                <option value=31>D5</option>
+                <option value=32>D#5</option>
+                <option value=33>E5</option>
+                <option value=34>F5</option>
+                <option value=35>F#5</option>
+            </select>
+            <input type="checkbox" name="gate2" class="gate-checkbox" value=1>Gate
+        </div>
+        <div id="step3-downdown" class="seq-step-selector">
+            <label for="step3">Step 3:</label>
+            <select id="step3" class="seq-step">
+                <option value=-1>XXX</option>
+                <option value=0>G2</option>
+                <option value=1>G#2</option>
+                <option value=2>A3</option>
+                <option value=3>A#3</option>
+                <option value=4>B3</option>
+                <option value=5>C3</option>
+                <option value=6>C#3</option>
+                <option value=7>D3</option>
+                <option value=8>D#3</option>
+                <option value=9>E3</option>
+                <option value=10>F3</option>
+                <option value=11>F#3</option>
+
+                <option value=12>G3</option>
+                <option value=13>G#3</option>
+                <option value=14>A4</option>
+                <option value=15>A#4</option>
+                <option value=16>B4</option>
+                <option value=17>C4</option>
+                <option value=18>C#4</option>
+                <option value=19>D4</option>
+                <option value=20>D#4</option>
+                <option value=21>E4</option>
+                <option value=22>F4</option>
+                <option value=23>F#4</option>
+
+                <option value=24>G4</option>
+                <option value=25>G#4</option>
+                <option value=26>A5</option>
+                <option value=27>A#5</option>
+                <option value=28>B5</option>
+                <option value=29>C5</option>
+                <option value=30>C#5</option>
+                <option value=31>D5</option>
+                <option value=32>D#5</option>
+                <option value=33>E5</option>
+                <option value=34>F5</option>
+                <option value=35>F#5</option>
+            </select>
+            <input type="checkbox" name="gate3" class="gate-checkbox" value=1>Gate
+        </div>
+        <div id="step4-downdown" class="seq-step-selector">
+            <label for="step4">Step 4:</label>
+            <select id="step4" class="seq-step">
+                <option value=-1>XXX</option>
+                <option value=0>G2</option>
+                <option value=1>G#2</option>
+                <option value=2>A3</option>
+                <option value=3>A#3</option>
+                <option value=4>B3</option>
+                <option value=5>C3</option>
+                <option value=6>C#3</option>
+                <option value=7>D3</option>
+                <option value=8>D#3</option>
+                <option value=9>E3</option>
+                <option value=10>F3</option>
+                <option value=11>F#3</option>
+
+                <option value=12>G3</option>
+                <option value=13>G#3</option>
+                <option value=14>A4</option>
+                <option value=15>A#4</option>
+                <option value=16>B4</option>
+                <option value=17>C4</option>
+                <option value=18>C#4</option>
+                <option value=19>D4</option>
+                <option value=20>D#4</option>
+                <option value=21>E4</option>
+                <option value=22>F4</option>
+                <option value=23>F#4</option>
+
+                <option value=24>G4</option>
+                <option value=25>G#4</option>
+                <option value=26>A5</option>
+                <option value=27>A#5</option>
+                <option value=28>B5</option>
+                <option value=29>C5</option>
+                <option value=30>C#5</option>
+                <option value=31>D5</option>
+                <option value=32>D#5</option>
+                <option value=33>E5</option>
+                <option value=34>F5</option>
+                <option value=35>F#5</option>
+            </select>
+            <input type="checkbox" name="gate4" class="gate-checkbox" value=1>Gate
+        </div>
+        <div id="step5-downdown" class="seq-step-selector">
+            <label for="step5">Step 5:</label>
+            <select id="step5" class="seq-step">
+                <option value=-1>XXX</option>
+                <option value=0>G2</option>
+                <option value=1>G#2</option>
+                <option value=2>A3</option>
+                <option value=3>A#3</option>
+                <option value=4>B3</option>
+                <option value=5>C3</option>
+                <option value=6>C#3</option>
+                <option value=7>D3</option>
+                <option value=8>D#3</option>
+                <option value=9>E3</option>
+                <option value=10>F3</option>
+                <option value=11>F#3</option>
+
+                <option value=12>G3</option>
+                <option value=13>G#3</option>
+                <option value=14>A4</option>
+                <option value=15>A#4</option>
+                <option value=16>B4</option>
+                <option value=17>C4</option>
+                <option value=18>C#4</option>
+                <option value=19>D4</option>
+                <option value=20>D#4</option>
+                <option value=21>E4</option>
+                <option value=22>F4</option>
+                <option value=23>F#4</option>
+
+                <option value=24>G4</option>
+                <option value=25>G#4</option>
+                <option value=26>A5</option>
+                <option value=27>A#5</option>
+                <option value=28>B5</option>
+                <option value=29>C5</option>
+                <option value=30>C#5</option>
+                <option value=31>D5</option>
+                <option value=32>D#5</option>
+                <option value=33>E5</option>
+                <option value=34>F5</option>
+                <option value=35>F#5</option>
+            </select>
+            <input type="checkbox" name="gate5" class="gate-checkbox" value=1>Gate
+        </div>
+        <div id="step6-downdown" class="seq-step-selector">
+            <label for="step6">Step 6:</label>
+            <select id="step6" class="seq-step">
+                <option value=-1>XXX</option>
+                <option value=0>G2</option>
+                <option value=1>G#2</option>
+                <option value=2>A3</option>
+                <option value=3>A#3</option>
+                <option value=4>B3</option>
+                <option value=5>C3</option>
+                <option value=6>C#3</option>
+                <option value=7>D3</option>
+                <option value=8>D#3</option>
+                <option value=9>E3</option>
+                <option value=10>F3</option>
+                <option value=11>F#3</option>
+
+                <option value=12>G3</option>
+                <option value=13>G#3</option>
+                <option value=14>A4</option>
+                <option value=15>A#4</option>
+                <option value=16>B4</option>
+                <option value=17>C4</option>
+                <option value=18>C#4</option>
+                <option value=19>D4</option>
+                <option value=20>D#4</option>
+                <option value=21>E4</option>
+                <option value=22>F4</option>
+                <option value=23>F#4</option>
+
+                <option value=24>G4</option>
+                <option value=25>G#4</option>
+                <option value=26>A5</option>
+                <option value=27>A#5</option>
+                <option value=28>B5</option>
+                <option value=29>C5</option>
+                <option value=30>C#5</option>
+                <option value=31>D5</option>
+                <option value=32>D#5</option>
+                <option value=33>E5</option>
+                <option value=34>F5</option>
+                <option value=35>F#5</option>
+            </select>
+            <input type="checkbox" name="gate6" class="gate-checkbox" value=1>Gate
+        </div>
+        <div id="step7-downdown" class="seq-step-selector">
+            <label for="step7">Step 7:</label>
+            <select id="step7" class="seq-step">
+                <option value=-1>XXX</option>
+                <option value=0>G2</option>
+                <option value=1>G#2</option>
+                <option value=2>A3</option>
+                <option value=3>A#3</option>
+                <option value=4>B3</option>
+                <option value=5>C3</option>
+                <option value=6>C#3</option>
+                <option value=7>D3</option>
+                <option value=8>D#3</option>
+                <option value=9>E3</option>
+                <option value=10>F3</option>
+                <option value=11>F#3</option>
+
+                <option value=12>G3</option>
+                <option value=13>G#3</option>
+                <option value=14>A4</option>
+                <option value=15>A#4</option>
+                <option value=16>B4</option>
+                <option value=17>C4</option>
+                <option value=18>C#4</option>
+                <option value=19>D4</option>
+                <option value=20>D#4</option>
+                <option value=21>E4</option>
+                <option value=22>F4</option>
+                <option value=23>F#4</option>
+
+                <option value=24>G4</option>
+                <option value=25>G#4</option>
+                <option value=26>A5</option>
+                <option value=27>A#5</option>
+                <option value=28>B5</option>
+                <option value=29>C5</option>
+                <option value=30>C#5</option>
+                <option value=31>D5</option>
+                <option value=32>D#5</option>
+                <option value=33>E5</option>
+                <option value=34>F5</option>
+                <option value=35>F#5</option>
+            </select>
+            <input type="checkbox" name="gate7" class="gate-checkbox" value=1>Gate
+        </div>
+        <div id="step8-downdown" class="seq-step-selector">
+            <label for="step" 8>Step 8:</label>
+            <select id="step8" class="seq-step">
+                <option value=-1>XXX</option>
+                <option value=0>G2</option>
+                <option value=1>G#2</option>
+                <option value=2>A3</option>
+                <option value=3>A#3</option>
+                <option value=4>B3</option>
+                <option value=5>C3</option>
+                <option value=6>C#3</option>
+                <option value=7>D3</option>
+                <option value=8>D#3</option>
+                <option value=9>E3</option>
+                <option value=10>F3</option>
+                <option value=11>F#3</option>
+
+                <option value=12>G3</option>
+                <option value=13>G#3</option>
+                <option value=14>A4</option>
+                <option value=15>A#4</option>
+                <option value=16>B4</option>
+                <option value=17>C4</option>
+                <option value=18>C#4</option>
+                <option value=19>D4</option>
+                <option value=20>D#4</option>
+                <option value=21>E4</option>
+                <option value=22>F4</option>
+                <option value=23>F#4</option>
+
+                <option value=24>G4</option>
+                <option value=25>G#4</option>
+                <option value=26>A5</option>
+                <option value=27>A#5</option>
+                <option value=28>B5</option>
+                <option value=29>C5</option>
+                <option value=30>C#5</option>
+                <option value=31>D5</option>
+                <option value=32>D#5</option>
+                <option value=33>E5</option>
+                <option value=34>F5</option>
+                <option value=35>F#5</option>
+            </select>
+            <input type="checkbox" name="gate8" class="gate-checkbox" value=1>Gate
+        </div>
+    </div>
+    <div class="horizontal-divider"></div>
+    <div id="seq-output">
+        <span id="step1-note" class="seq-note">XXX</span>
+        <span id="step2-note" class="seq-note">XXX</span>
+        <span id="step3-note" class="seq-note">XXX</span>
+        <span id="step4-note" class="seq-note">XXX</span>
+        <span id="step5-note" class="seq-note">XXX</span>
+        <span id="step6-note" class="seq-note">XXX</span>
+        <span id="step7-note" class="seq-note">XXX</span>
+        <span id="step8-note" class="seq-note">XXX</span>
+    </div>
+</body>
+
+<script>
+    var dropdowns = document.getElementsByClassName("seq-step")
+    var gates = document.getElementsByClassName("gate-checkbox")
+    var seq_outputs = document.getElementsByClassName("seq-note")
+    const xhttp = new XMLHttpRequest();
+
+    
+    
+    function testAjax(data, gates) {
+        data_uri = encodeURI(data.join(","))
+        url = "update?data=" + data_uri
+        url += "&gates=" + encodeURI(gates.join(","))
+        console.log(url)
+        xhttp.open("GET", url, true);
+        xhttp.send();
+        xhttp.onreadystatechange=(e)=>{
+        console.log(xhttp.status)
+        }}
+
+    function updateNotes() {
+        for (var i = 0; i < dropdowns.length; i++) {
+            noteArray[i] = dropdowns[i].value;
+             if(gates[i].checked) {gateArray[i] = 1} else {gateArray[i] =0};
+            seq_outputs[i].innerHTML = dropdowns[i].selectedOptions[0].innerText;
+        }
+    };
+
+    var noteArray = Array(8);
+    var gateArray = Array(8);
+    updateNotes()
+
+
+    for (var i = 0; i < dropdowns.length; i++) {
+        gates[i].addEventListener("change", function (event) {
+            updateNotes();
+            testAjax(noteArray,gateArray)
+        })
+        dropdowns[i].addEventListener("change", function (event) {
+            updateNotes();
+            testAjax(noteArray,gateArray)
+        })
+    }
+</script>
+
+</html>
