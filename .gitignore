@@ -1,3 +1,6 @@
 ./node_modules
 firmware.bin
 node_modules/*
+firmware.bin
+dist/
+static/

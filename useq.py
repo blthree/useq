@@ -4,10 +4,24 @@ from picoweb.utils import parse_qs
 from aswitch import *
 from machine import Pin
 from mcp492x import MCP492x
+import network
+from time import sleep
+# import pkg_resources
+# import uerrno
 # requires micropython-ulogging, micropython-uasyncio, micropython-pkg_resources
 
+# ap_ssid = "useq"
+# ap_password = "useq"
+# ap_authmode = 3  # WPA2
+
+
+# def start_ap(ap_ssid,ap_password,authmode):
+#     wlan_ap = network.WLAN(network.AP_IF)
+#     wlan_ap.active(True)
+#     wlan_ap.config(essid=ap_ssid, password=ap_password, authmode=ap_authmode)
+
 def wlan_connect(ssid='MYSSID', password='MYPASS'):
-    import network
+    # import network
     wlan = network.WLAN(network.STA_IF)
     if not wlan.active() or not wlan.isconnected():
         wlan.active(True)
@@ -20,7 +34,8 @@ def wlan_connect(ssid='MYSSID', password='MYPASS'):
 
 wlan_connect('TangyNet', '7thheaven')
 dac = MCP492x()
-app = picoweb.WebApp(__name__)
+# app = picoweb.WebApp(__name__)
+app = picoweb.WebApp(None) # workaround for sendfile see: https://github.com/pfalcon/picoweb/issues/15
 
 
 @app.route("/")
@@ -30,12 +45,19 @@ def index(req, resp):
     for line in html.readlines():
         yield from resp.awrite(line)
 
+@app.route("/main.js")
+def js_main(req, resp):
+    yield from app.sendfile(resp, 'main.js.gz', b"text/javascript", {"Content-Encoding": "gzip"})
+
+
+
 def note_to_cv(notes):
     for x in notes:
         z = x-2
         y = z//3
         r = ((y+1)*84) + ((z-y+1)*83)
         yield r
+
 
 @app.route("/update")
 def update_seq(req, resp):
