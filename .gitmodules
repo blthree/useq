@@ -1,0 +1,9 @@
+[submodule "picoweb"]
+	path = picoweb
+	url = https://github.com/pfalcon/picoweb.git
+[submodule "pycopy"]
+	path = pycopy
+	url = https://github.com/pfalcon/pycopy.git
+[submodule "micropython-lib"]
+	path = micropython-lib
+	url = https://github.com/pfalcon/micropython-lib.git
