@@ -93,7 +93,7 @@ class Delay_ms(object):
         self.tstop = None  # Not running
 
 class Switch(object):
-    debounce_ms = 50
+    debounce_ms = 30
     def __init__(self, pin):
         self.pin = pin # Should be initialised for input with pullup
         self._open_func = False
