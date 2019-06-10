@@ -8,10 +8,12 @@ class MCP492x:
         self.cs.value(1)
         self.ldac.value(1)
         self.note_index = 0
-        self.notes = [0 for x in range(8)]
+        self.notes = [[0 for x in range(8)] for y in range(2)] # 2x8 matrix
+        
 
-    def write(self, val):
-        buf = (self.base_val + val).to_bytes(2,1)
+    def write(self, dac, val):
+        dac_select_bit = 0b1000000000000000 if dac else 0b0
+        buf = (self.base_val + val + dac_select_bit).to_bytes(2,1)
         self.cs.value(0)
         self.hspi.write(buf)
         self.cs.value(1)
@@ -26,5 +28,6 @@ class MCP492x:
             self.note_index +=1
         else:
             self.note_index = 0
-        self.write(self.notes[self.note_index])
+        self.write(0,self.notes[self.note_index])
+        self.write(1,self.notes[self.note_index])
      
