@@ -28,6 +28,6 @@ class MCP492x:
             self.note_index +=1
         else:
             self.note_index = 0
-        self.write(0,self.notes[self.note_index])
-        self.write(1,self.notes[self.note_index])
+        self.write(0,self.notes[0][self.note_index])
+        self.write(1,self.notes[1][self.note_index])
      
