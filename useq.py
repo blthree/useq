@@ -5,7 +5,9 @@ from aswitch import *
 from machine import Pin
 from mcp492x import MCP492x
 import network
-from time import sleep
+
+
+
 # import pkg_resources
 # import uerrno
 # requires micropython-ulogging, micropython-uasyncio, micropython-pkg_resources
@@ -32,8 +34,10 @@ def wlan_connect(ssid='MYSSID', password='MYPASS'):
     print('network config:', wlan.ifconfig())
 
 
+	
 wlan_connect('TangyNet', '7thheaven')
 dac = MCP492x()
+
 # app = picoweb.WebApp(__name__)
 app = picoweb.WebApp(None) # workaround for sendfile see: https://github.com/pfalcon/picoweb/issues/15
 
@@ -44,6 +48,10 @@ def index(req, resp):
     html = open('index.html', 'r')
     for line in html.readlines():
         yield from resp.awrite(line)
+
+@app.route("/main.css")
+def js_main(req, resp):
+    yield from app.sendfile(resp, 'main.css.gz', b"text/css", {"Content-Encoding": "gzip"})
 
 @app.route("/main.js")
 def js_main(req, resp):
@@ -58,6 +66,12 @@ def note_to_cv(notes):
         r = ((y+1)*84) + ((z-y+1)*83)
         yield r
 
+def notemap(note):
+    z = int(note)-2
+    y = z//3
+    r = ((y+1)*84) + ((z-y+1)*83)
+    return r
+
 
 @app.route("/update")
 def update_seq(req, resp):
@@ -65,10 +79,10 @@ def update_seq(req, resp):
     global dac_vals
     yield from picoweb.start_response(resp)
     qs = parse_qs(req.qs)
-    notes = [int(x) for x in qs['data'].split(',')]
-    gates = [int(x) for x in qs['gates'].split(',')]
-    dac_vals = list(note_to_cv(notes))
-    dac.set_notes(dac_vals)
+    notes = [[notemap(x) for x in qs['dacA'].split(',')], [notemap(x) for x in qs['dacB'].split(',')]]
+    gates = [[int(x) for x in qs['gatesA'].split(',')], [int(x) for x in qs['gatesB'].split(',')]]
+    #dac_vals = list(note_to_cv(notes))
+    dac.set_notes(notes)
 
 
 
